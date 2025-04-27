@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Profile - GolfNow</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f8f0;
+            padding: 20px;
+        }
+
+        .profile-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background: #e6f2e6;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        strong {
+            color: #2e8b57;
+        }
+
+        .cancel-button {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .cancel-button:hover {
+            background-color: #e60000;
+        }
+    </style>
+</head>
+<body>
+
+<div class="profile-card">
+    <h1>Welcome, {{ user.username }}!</h1>
+    <h2>Your Bookings:</h2>
+
+    {% if bookings %}
+        <ul>
+        {% for booking in bookings %}
+            <li>
+                <strong>Course:</strong> {{ booking.course_name }}<br>
+                <strong>Location:</strong> {{ booking.course_location }}<br>
+                <strong>Tee Time:</strong> {{ booking.tee_time }}<br>
+                <strong>Confirmation Code:</strong> {{ booking.confirmation_code }}
+                <form method="post" action="{% url 'cancel_booking' booking.id %}">
+                    {% csrf_token %}
+                    <button class="cancel-button" type="submit">Cancel</button>
+                </form>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p style="text-align: center;">You have no bookings yet!</p>
+    {% endif %}
+</div>
+
+</body>
+</html>
+
+

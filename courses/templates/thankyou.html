@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Confirmation - GolfNow</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url("{% static 'images/' %}{{ course_image }}") no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: white;
+        }
+
+        .confirmation-card {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            text-align: center;
+            width: 400px;
+        }
+
+        .confirmation-card h1 {
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .confirmation-card p {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #ddd;
+        }
+
+        .confirmation-code {
+            background-color: #2e8b57;
+            padding: 10px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="confirmation-card">
+    <h1>Thank You, {{ name }}!</h1>
+    <p><strong>Golf Course:</strong> {{ course.name }}</p>
+    <p><strong>Tee Time:</strong> {{ tee_time }}</p>
+    <p><strong>Email:</strong> {{ email }}</p>
+    <p><strong>Phone:</strong> {{ phone }}</p>
+    <div class="confirmation-code">
+        Confirmation Code: {{ confirmation_code }}
+    </div>
+</div>
+
+</body>
+</html>
+
+
+
+

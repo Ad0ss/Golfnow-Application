@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to GolfNow</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <style>
+        nav {
+            background-color: #2e8b57;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f8f0;
+        }
+
+        .welcome-banner {
+            padding: 50px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2e8b57;
+        }
+
+        .course-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            width: 300px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .course-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="/">Welcome</a> |
+    <a href="/courses/">Explore Courses</a> |
+    <a href="/courses/book/">Book Tee Time</a> |
+    <a href="/profile/">My Profile</a> |
+    <a href="/logout/">Logout</a>
+</nav>
+
+<div class="welcome-banner">
+    <h1>Welcome to GolfNow</h1>
+    <p>Connecting Golfers to Local and Rural Golf Courses Across Southeast Ohio!</p>
+</div>
+
+<div class="course-list">
+    {% for course in courses %}
+    <div class="course-card">
+        <img src="{% static 'images/' %}{{ course.image }}" alt="{{ course.name }}">
+        <h2>{{ course.name }}</h2>
+        <p>{{ course.location }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

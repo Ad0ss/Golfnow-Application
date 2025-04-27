@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ course.name }}</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <style>
+        body {
+            background: url("{% static 'images/' %}{{ course.image }}") no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: auto;
+        }
+
+        header {
+            background-color: rgba(0, 100, 0, 0.7);
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            background-color: rgba(0, 0, 0, 0.5); /* Dark transparent box */
+            margin: 40px auto;
+            padding: 30px;
+            max-width: 600px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        main p {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        .button {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2e8b57;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background-color: #228b22;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>{{ course.name }}</h1>
+    <nav>
+        <a href="/">Welcome</a> |
+        <a href="/courses/">Courses</a> |
+        <a href="/courses/book/">Book Tee Time</a>
+    </nav>
+</header>
+
+<main>
+    <p><strong>Location:</strong> {{ course.location }}</p>
+    <p><strong>Holes:</strong> {{ course.holes }}</p>
+    <p><strong>Description:</strong> {{ course.description }}</p>
+    <a href="/courses/book/" class="button">Book a Tee Time</a>
+</main>
+
+</body>
+</html>
+
