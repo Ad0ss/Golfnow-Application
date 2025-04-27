@@ -30,6 +30,32 @@
             background-color: #f4f8f0;
         }
 
+        .search-bar {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .search-bar input[type="text"] {
+            width: 50%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #2e8b57;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .search-bar button:hover {
+            background-color: #228b22;
+        }
+
         .course-list {
             display: flex;
             justify-content: center;
@@ -83,6 +109,13 @@
         .view-details:hover {
             background-color: #228b22;
         }
+
+        .no-results {
+            text-align: center;
+            font-size: 20px;
+            color: #888;
+            margin-top: 50px;
+        }
     </style>
 </head>
 <body>
@@ -95,6 +128,14 @@
     <a href="/logout/">Logout</a>
 </nav>
 
+<div class="search-bar">
+    <form method="GET">
+        <input type="text" name="q" placeholder="Search for a golf course..." value="{{ query|default:'' }}">
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+{% if courses %}
 <div class="course-list">
     {% for course in courses %}
     <div class="course-card">
@@ -106,9 +147,15 @@
     </div>
     {% endfor %}
 </div>
+{% else %}
+<div class="no-results">
+    <p>No course found. Please try another search.</p>
+</div>
+{% endif %}
 
 </body>
 </html>
+
 
 
 

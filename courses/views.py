@@ -84,9 +84,18 @@ def logout_view(request):
 def welcome(request):
     return render(request, 'welcome.html', {'courses': courses})
 
-# Home page (Explore Courses)
+# Home page (Explore Courses) with Search
 def home(request):
-    return render(request, 'home.html', {'courses': courses})
+    query = request.GET.get('q')
+    filtered_courses = courses
+
+    if query:
+        filtered_courses = [c for c in courses if query.lower() in c['name'].lower()]
+
+    return render(request, 'home.html', {
+        'courses': filtered_courses,
+        'query': query
+    })
 
 # Course detail page
 def course_detail(request, course_id):
@@ -152,6 +161,7 @@ def cancel_booking(request, booking_id):
         return redirect('profile')
 
     return redirect('profile')
+
 
 
 

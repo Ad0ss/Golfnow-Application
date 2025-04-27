@@ -26,7 +26,7 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('register/', views.register, name='register'),
     path('profile/', views.profile, name='profile'),
-    path('cancel-booking/<int:booking_id>/', views.cancel_booking, name='cancel_booking'),  # 👈 New cancel booking route
+    path('cancel-booking/<int:booking_id>/', views.cancel_booking, name='cancel_booking'),  
     path('', views.welcome, name='welcome'),
     path('courses/', include('courses.urls')),
 ]
