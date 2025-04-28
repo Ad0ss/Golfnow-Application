@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     <style>
         body {
-            background: url("{% static 'images/' %}{{ course.image }}") no-repeat center center fixed;
+            background: url("{% static 'images/'|add:course.image %}") no-repeat center center fixed;
             background-size: cover;
             font-family: Arial, sans-serif;
             color: white;
@@ -85,4 +85,5 @@
 
 </body>
 </html>
+
 

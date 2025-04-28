@@ -139,7 +139,7 @@
 <div class="course-list">
     {% for course in courses %}
     <div class="course-card">
-        <img src="{% static 'images/' %}{{ course.image }}" alt="{{ course.name }}">
+        <img src="{% static 'images/'|add:course.image %}" alt="{{ course.name }}">
         <h2>{{ course.name }}</h2>
         <p>{{ course.location }}</p>
         <p class="course-description">{{ course.description }}</p>
@@ -155,6 +155,7 @@
 
 </body>
 </html>
+
 
 
 
